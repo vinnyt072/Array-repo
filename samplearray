@@ -1,0 +1,14 @@
+public class Exercise {
+    
+    public static String[] storeStringsInArray() {
+        // Let's create an array to store funny animal sounds
+        String[] animalSounds = new String[3];
+        // Assigning some funny animal sounds to the array
+        animalSounds[0] = "Woof!";
+        animalSounds[1] = "Meow!";
+        animalSounds[2] = "Quack!";
+        System.out.println(animalSounds.length);
+        return animalSounds;
+    }
+ 
+}
