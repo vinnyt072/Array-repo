@@ -1,0 +1,28 @@
+public class Exercise {
+    
+    public static void printAnimalSounds() {
+        // Let's create an array to store funny animal sounds
+        String[] animalSounds = {
+            "Moo!",
+            "Baa!",
+            "Oink!",
+            "Meow!",
+            "Woof!"
+        };
+        
+        for (String sound : animalSounds) {
+            System.out.println(sound.toUpperCase());
+        }
+    }
+ 
+ 
+}
+
+
+//output:  All small letter changes to capital by using toUpperCase function
+ Expected Output:
+  "MOO!"
+  "BAA!"
+  "OINK!"
+  "MEOW!"
+  "WOOF! //
