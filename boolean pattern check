@@ -1,0 +1,116 @@
+// This functionhas to check  if a one-to-one mapping exists between characters in the pattern and words in the string.//
+
+//If consistent mapping found → true//
+//If inconsistent mapping or different lengths → false //
+
+pattern = aab
+second str = cat bird dog
+
+boolean matchPattern(String pattern, String words) {
+	if (pattern == null || words == null) {
+		return false;
+	}
+
+	String[] wordsArr= words.split(" "); // [cat, cat, dog]	 
+	if (wordsArr.length != pattern.length()) {
+		return false;
+	}
+
+	Map<Character, String> charToWord = new HashMap<>(); // {}
+
+	for (int i = 0; i < wordsArr.length; i++) {
+		if (charToWord.containsKey(pattern[i])) {
+			if (!charToWord.get(pattern[i]).equals(wordsArr[i])) {
+				return false;
+			}
+		} else {
+			charToWord.put(pattern[i], wordsArr[i]); // {"a", cat} , {"b", dog}
+		}
+	}
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Explaination :-  What the code does:
+boolean matchPattern(String pattern, String words) {
+	if (pattern == null || words == null) {
+		return false;
+	}
+
+
+ ✅ Step 1: Checks for null inputs — if pattern or words is missing, return false.
+
+	String[] wordsArr= words.split(" "); // [cat, bird, dog]
+	if (wordsArr.length != pattern.length()) {
+		return false;
+	}
+
+
+✅ Step 2: Split the sentence into individual words.
+So "cat bird dog" becomes ["cat", "bird", "dog"].
+
+Then check if the number of words equals the number of pattern characters.
+Here:
+pattern = aab → 3 characters
+words = 3 words → good ✅
+If they don’t match → return false.
+
+	Map<Character, String> charToWord = new HashMap<>();
+
+
+✅ Step 3: Create a map to store which character corresponds to which word.
+For example: 'a' → "cat", 'b' → "dog".
+
+	for (int i = 0; i < wordsArr.length; i++) {
+		if (charToWord.containsKey(pattern[i])) {
+			if (!charToWord.get(pattern[i]).equals(wordsArr[i])) {
+				return false;
+			}
+		} else {
+			charToWord.put(pattern[i], wordsArr[i]);
+		}
+	}
+
+
+✅ Step 4: Iterate through every position i:
+
+At each index, take:
+
+pattern[i] (like 'a')
+
+wordsArr[i] (like "cat")
+
+Then:
+
+If pattern character already exists in the map
+
+Check if it maps to the same word.
+
+If not → pattern breaks → return false.
+
+If not in the map
+
+Add it to the map (store new mapping).
+
+🧮 Example walk-through:
+
+Input:
+
+pattern = "aab"
+words = "cat bird dog"
+
+
+| Step | i | pattern[i] | wordsArr[i] | Map before | Action | Result |
+|------|---|-------------|--------------|-------------|---------|
+| 1 | 0 | 'a' | "cat" | {} | Add 'a' → cat | {'a'='cat'} |
+| 2 | 1 | 'a' | "bird" | {'a'='cat'} | 'a' already exists but now "cat" ≠ "bird" | ❌ return false |
+
+So output = false ❌
+
+
+✅ Summary:
+
+This function checks if a one-to-one mapping exists between characters in the pattern and words in the string.
+
+If consistent mapping found → true
+If inconsistent mapping or different lengths → false  //
